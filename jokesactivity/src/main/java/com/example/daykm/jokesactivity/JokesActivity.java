@@ -7,6 +7,7 @@ import android.widget.TextView;
 public class JokesActivity extends AppCompatActivity {
 
     public static final String KEY = "INTENT_KEY";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

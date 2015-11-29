@@ -17,15 +17,33 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    productFlavors {
+        paid {
+            applicationId "com.udacity.gradle.builditbigger.paid"
+        }
+        free {
+            applicationId "com.udacity.gradle.builditbigger.free"
+        }
+    }
 }
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     // Added for AdMob
     compile project(path: ':jokesbackend', configuration: 'android-endpoints')
-    compile 'com.android.support:appcompat-v7:23.1.0'
-    compile 'com.google.android.gms:play-services-gcm:8.3.0'
-    compile 'com.google.android.gms:play-services-ads:8.3.0'
+    compile 'com.android.support:appcompat-v7:23.1.1'
+    freeCompile 'com.google.android.gms:play-services-gcm:8.3.0'
+    freeCompile 'com.google.android.gms:play-services-ads:8.3.0'
     compile project(':jokes')
     compile project(':jokesactivity')
+    androidTestCompile 'com.android.support.test:runner:0.+'
+    // for dependency conflicts
+    androidTestCompile 'com.android.support:support-annotations:23.1.1'
+    // Set this dependency to use JUnit 4 rules
+    androidTestCompile 'com.android.support.test:rules:0.+'
+    androidTestCompile "org.mockito:mockito-core:1.+"
+    androidTestCompile 'com.crittercism.dexmaker:dexmaker:1.4'
+    androidTestCompile 'com.crittercism.dexmaker:dexmaker-mockito:1.4'
+    androidTestCompile "com.crittercism.dexmaker:dexmaker-dx:1.4"
 }
